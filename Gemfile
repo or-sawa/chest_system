@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.6.8'
+
 gem 'rails',        '~> 5.1.6'
 gem 'rails-i18n' # 今回はこのgemを追加しています。
 gem 'bcrypt'
@@ -14,6 +16,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks',   '~> 5'
 gem 'jbuilder',     '~> 2.5'
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
 
 group :development, :test do
   gem 'sqlite3'
