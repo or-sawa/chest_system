@@ -1,18 +1,162 @@
 <% provide(:title, @user.name) %>
-<div>
-  <table class="table table-bordered table-condensed user-table">
-    <tr>
-      <td>時間管理表</td>
-      <td>指定勤務時間</td>
-      <td>基本時間</td>
-      <td>月初日</td>
-    </tr>
 
-    <tr>
-      <td>所属</td>
-      <td>名前：<%= @user.name %></td>
-      <td>出勤日数</td>
-      <td>月末日</td>
-    </tr>
-  </table>
-</div>
+<head prefix="og: http://ogp.me/ns#">
+<link rel="stylesheet" href="../users/main.css" />
+    <link rel="stylesheet" href="https://static.spearly.com/css/spearly-richtext.min.css" type="text/css"/>
+    <script src="https://static.spearly.com/js/cms.js" defer></script>
+    <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="XZJSFXLmbFdVbJJhxH0a-7jz1viIeRO4GaKTPgLaBIs"},{once:true})</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@spearly/jquery-plugin/dist/spearly-plugin.js" defer></script>
+</head>
+<body class="is-preload">
+    
+    <!-- Header -->
+    <header id="header">
+        <div>
+            <a class="navbar-brand" href="../index.html">
+                <h2 class="pt-2 text-white">ハイクラス求人</h2>
+            </a>
+        </div>
+        <div class="bl_3daysSearchBlock_ttl">
+            <div class="bl_3daysSearchBlock_ttl_main" style="color: #fff;">求人検索</div>
+            <div class="bl_3daysSearchBlock_ttl_sub"></div>
+            <div class="el_searchResult">
+                全 <span id="search-count" data-type="count">0</span> 件
+            </div>
+        </div>
+        <div id="" class="bl_selectBlock">
+            <div class="bl_selectBlock_wrapper">
+                <div class="bl_selectBlock_wrapper_wrapper">
+                    <label for="category-select" class="bl_selectBlock_ttl">職種</label>
+                    <select id="category-select" style="color: #000;">
+                        <option value="">条件なし</option>
+                        <option value="営業職">営業職　💼</option>
+                        <option value="事務・管理職">事務・管理職　🖊</option>
+                        <option value="販売">販売　💴</option>
+                        <option value="製造">製造　🏭</option>
+                        <option value="警備">警備　👮</option>
+                        <option value="運輸・配送">運輸・配送　🚚</option>
+                        <option value="清掃・倉庫・軽作業">清掃・倉庫・軽作業　🧹</option>
+                        <option value="接客・サービス">接客・サービス　💁‍♂️</option>
+                        <option value="調理・栄養士">調理・栄養士　🥕</option>
+                        <option value="介護・福祉">介護・福祉　🧑‍🦼</option>
+                        <option value="保育・教育">保育・教育　👶</option>
+                        <option value="医療・看護・保健">医療・看護・保健　👩‍⚕️</option>
+                        <option value="技術職（建設・開発・エンジニア）">技術職（建設・開発・エンジニア）　💻</option>
+                        <option value="建築・土木・電気工事">建築・土木・電気工事　⛑</option>
+                    </select>
+                </div>
+                <div class="bl_selectBlock_wrapper_wrapper">
+                    <label for="type-select" class="bl_selectBlock_ttl">雇用形態</label>
+                    <select id="type-select" style="color: #000;">
+                        <option value="">条件なし</option>
+                        <option value="正社員">正社員</option>
+                        <option value="派遣社員">派遣社員</option>
+                        <option value="契約社員">契約社員</option>
+                        <option value="パート">パート</option>
+                    </select>
+                </div>
+                <button id="search-button">この条件で検索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+        
+        <section id="one">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 sticky-top">
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto" style="display: flex; list-style: none; justify-content: space-between;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../partners.html">取引先</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../info.html">情報提供</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../php/contact.php">お問い合わせ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../blog.html">つぶやき</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="topicpathBlock showTopicpathBlock clearfix" style="padding-top: 40px;">
+                <div class="topicpathBox">
+                    <ol>
+                        <li class="activepath">
+                            <a href="../index.html">
+                                ホーム
+                            </a>
+                        </li>
+                        <li class="activepath">
+                            <a>
+                                鹿児島市内の求人一覧
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+
+                <kagoshima-city-list data-item-page-path='jobs_show_path'>
+
+                  <div class="jobs" style="border-top: solid 5px #5d627b; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22); padding: 20px; margin: 20px;" data-location="${values.type}"data-category="${values.category}">
+                    <a>
+                      <img src="{%= kagoshima-city_image %}" height="100" width="200">
+                      <h3 style="font-size: 20px;">{%= kagoshima-city_title %}</h3><br>
+                      <p style="font-size: 75%; line-height: 2; font-weight: 300; margin: 0; padding: 0; border: 0; font: inherit; vertical-align: baseline; display: flex; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px;">{%= kagoshima-city_company %}</p>
+                      <p style="margin-bottom: 3px; font-size: 87.5%; line-height: 1.6;">{%= kagoshima-city_salary %}</p>
+                      <p style="font-size: 87.5%; line-height: 1.6;">{%= kagoshima-city_area %}</p>
+                    </a>
+                  </div>
+                </kagoshima-city-list>
+
+            </div>
+        </section>
+        <ul class="actions" style="margin-top: 40px; cursor: pointer;">
+            <li><a>ページ上部へ</a></li>
+        </ul>
+        
+        <section id="two">
+            <ul style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; list-style: none;">
+                <li style="padding: 0; flex-basis: calc((100% - 16px) / 3)">
+                    <a href="kagoshima-list.html?area=kagoshima-city" class="button" style="width: 100%">鹿児島市内エリア</a>
+                </li>
+                <li style="padding: 0; flex-basis: calc((100% - 16px) / 3)">
+                    <a href="kirishima-list.html?area=kirishima" class="button" style="width: 100%">霧島・姶良エリア</a>
+                </li>
+                <li style="padding: 0; flex-basis: calc((100% - 16px) / 3)">
+                    <a href="hioki-list.html?area=hioki" class="button" style="width: 100%">日置・串木野エリア</a>
+                </li>
+                <li style="padding: 0; flex-basis: calc((100% - 16px) / 3)">
+                    <a href="hokusatsu-list.html?area=hokusatsu" class="button" style="width: 100%">薩摩川内・北薩エリア</a>
+                </li>
+                <li style="padding: 0; flex-basis: calc((100% - 16px) / 3)">
+                    <a href="nansatsu-list.html?area=nansatsu" class="button" style="width: 100%">南薩・指宿エリア</a>
+                </li>
+                <li style="padding: 0; flex-basis: calc((100% - 16px) / 3)">
+                    <a href="kanoya-list.html?area=kanoya" class="button" style="width: 100%">鹿屋・大隅・離島エリア</a>
+                </li>
+                <li style="padding: 0; flex-basis: 100%">
+                    <a href="all-japan-list.html?area=all-japan" class="button" style="width: 100%">全国エリア</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="copyright">
+                <li>&copy; sawa co_</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</body>
