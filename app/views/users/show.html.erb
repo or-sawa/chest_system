@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <head prefix="og: http://ogp.me/ns#">
-<link rel="stylesheet" href="../users/main.css" />
+    <style id="fpbf_ac93d8111_css">@font-face { font-family: 'fpbf_ac93d8111'; font-display: swap; src: url('https://s3-ap-northeast-1.amazonaws.com/fp-bf/3d4c80e6') format('woff'); }</style>
     <link rel="stylesheet" href="https://static.spearly.com/css/spearly-richtext.min.css" type="text/css"/>
     <script src="https://static.spearly.com/js/cms.js" defer></script>
     <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="XZJSFXLmbFdVbJJhxH0a-7jz1viIeRO4GaKTPgLaBIs"},{once:true})</script>
@@ -24,20 +24,6 @@
         
         <section id="one">
             <div class="topicpathBlock showTopicpathBlock clearfix" style="padding-top: 40px;">
-                <div class="topicpathBox">
-                    <ol>
-                        <li class="activepath">
-                            <a href="../index.html">
-                                ホーム
-                            </a>
-                        </li>
-                        <li class="activepath">
-                            <a>
-                                鹿児島市内の求人一覧
-                            </a>
-                        </li>
-                    </ol>
-                </div>
                 <kagoshima-city-list data-item-page-path='jobs_show_path'>
 
                   <div class="jobs" style="border-top: solid 5px #5d627b; box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22); padding: 20px; margin: 20px;" data-location="${values.type}"data-category="${values.category}">
@@ -52,6 +38,19 @@
                 </kagoshima-city-list>
             </div>
         </section>
+        <ul class="actions" style="margin-top: 40px; cursor: pointer;">
+            <li><a>ページ上部へ</a></li>
+        </ul>
     </div>
     <!-- Footer -->
+
+    <!-- Scripts -->
+    <script>
+        $(".actions").click(function() {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 500);
+        return false;
+        });
+    </script>
 </body>
