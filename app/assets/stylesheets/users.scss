@@ -33,6 +33,14 @@
 
 /* 求人一覧ページ */
 
+
+
 ul {
   list-style: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .jobs {
+    max-width: 100%;
+  }
 }
