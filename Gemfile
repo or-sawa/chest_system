@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.8'
+ruby '2.6.6'
 
 gem 'rails',        '~> 5.1.6'
 gem 'rails-i18n' # 今回はこのgemを追加しています。
